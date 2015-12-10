@@ -104,11 +104,8 @@ export default Ember.Component.extend({
       var applyAction = self.get('applyAction');
 
       if (applyAction) {
-        Ember.assert(
-          'applyAction for date-range-picker must be a function',
-          typeof applyAction === 'function'
-        );
-        applyAction(start, end);
+
+        self.sendAction('applyAction', start, end);
       } else {
         self.setProperties({
           start, end
@@ -120,11 +117,8 @@ export default Ember.Component.extend({
       var cancelAction = self.get('cancelAction');
 
       if (cancelAction) {
-        Ember.assert(
-          'cancelAction for date-range-picker must be a function',
-          typeof cancelAction === 'function'
-        );
-        cancelAction();
+
+        self.sendAction('cancelAction');
       } else {
         self.set('start', self.get('start'));
         self.set('end', self.get('end'));
