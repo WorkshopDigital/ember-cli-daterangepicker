@@ -66,7 +66,7 @@ export default Ember.Component.extend({
   cancelAction: null,
   autoUpdateInput: true,
   autoApply: false,
-  alwaysShowCalendars: false,
+  alwaysShowCalendars: true,
   firstDay: 0,
 
   // Init the dropdown when the component is added to the DOM
