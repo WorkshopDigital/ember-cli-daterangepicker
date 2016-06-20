@@ -67,6 +67,7 @@ export default Ember.Component.extend({
   autoUpdateInput: true,
   autoApply: false,
   alwaysShowCalendars: true,
+  calendarAlwaysOpen: false,
   firstDay: 0,
 
   // Init the dropdown when the component is added to the DOM
@@ -93,6 +94,7 @@ export default Ember.Component.extend({
 
     let options = {
       alwaysShowCalendars: this.get('alwaysShowCalendars'),
+      calendarAlwaysOpen: this.get('calendarAlwaysOpen'),
       autoUpdateInput: this.get('autoUpdateInput'),
       autoApply: this.get('autoApply'),
       locale: {
