@@ -17,7 +17,7 @@ module.exports = {
 
       var vendor = this.treePaths.vendor;
       this.app.import(vendor + '/bootstrap-daterangepicker/daterangepicker.js');
-      this.app.import(vendor + '/bootstrap-daterangepicker/daterangepicker.css');
+      // this.app.import(vendor + '/bootstrap-daterangepicker/daterangepicker.css');
     }
   },
 
