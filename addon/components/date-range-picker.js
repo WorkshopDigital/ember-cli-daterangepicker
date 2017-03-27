@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import moment from 'moment';
-import layout from '../templates/components/date-range-picker';
+import layout from 'ember-cli-daterangepicker/templates/components/date-range-picker';
 
 const {
   run,
@@ -71,7 +71,7 @@ export default Ember.Component.extend({
   autoUpdateInput: true,
   autoApply: false,
   alwaysShowCalendars: false,
-  context: undefined,
+  calendarAlwaysOpen: false,
   firstDay: 0,
   isInvalidDate: noop,
   isCustomDate: noop,
@@ -169,6 +169,12 @@ export default Ember.Component.extend({
 
   _setupPicker() {
     this.$('.daterangepicker-input').daterangepicker(this.getOptions());
+
+    if( this.get('calendarAlwaysOpen')) {
+      this.$('.daterangepicker-input').data( 'daterangepicker' ).show();
+      this.$('.daterangepicker-input').data( 'daterangepicker' ).hide = function() { return };
+    }
+
     this.attachPickerEvents();
   },
 

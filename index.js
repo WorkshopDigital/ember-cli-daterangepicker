@@ -12,17 +12,8 @@ module.exports = {
     this._super.included.apply(this, arguments);
 
     if (!process.env.EMBER_CLI_FASTBOOT) {
-<<<<<<< HEAD
-      var daterangepickerPath = path.dirname(require.resolve('bootstrap-daterangepicker'));
-      this.options = { daterangepickerPath: daterangepickerPath };
-
-      var vendor = this.treePaths.vendor;
-      this.app.import(vendor + '/bootstrap-daterangepicker/daterangepicker.js');
-      // this.app.import(vendor + '/bootstrap-daterangepicker/daterangepicker.css');
-=======
       this.app.import('vendor/bootstrap-daterangepicker/daterangepicker.js');
       this.app.import('vendor/bootstrap-daterangepicker/daterangepicker.css');
->>>>>>> josemarluedke/ember-cli-daterangepicker/master
     }
   },
 
