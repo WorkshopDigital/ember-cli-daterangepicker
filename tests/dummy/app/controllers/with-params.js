@@ -4,14 +4,22 @@ export default Ember.Controller.extend({
 
   actions: {
 
-    apply(startDate, endDate) {
-      console.log('date range updated:', startDate + ' - ' + endDate);
+    apply( start, end ) {
+      console.log('date range updated:', start + ' - ' + end );
+      this.setProperties({
+        'start': start,
+        'end': end
+      });
     },
 
     cancel() {
       console.log('date range change canceled');
     }
 
-  }
+  },
+
+  start: "20140101",
+
+  end: "20141231"
 
 });

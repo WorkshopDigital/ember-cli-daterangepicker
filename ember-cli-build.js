@@ -8,7 +8,7 @@ module.exports = function(defaults) {
 
     'ember-cli-daterangepicker': {
       importDatepickerJS: true,
-      importDatepickerCSS: false
+      importDatepickerCSS: true
     }
   });
 

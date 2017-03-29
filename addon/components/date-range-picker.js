@@ -207,7 +207,10 @@ export default Ember.Component.extend({
         `${actionName} for date-range-picker must be a function`,
         typeof action === 'function'
       );
-      this.sendAction(actionName, ...attrs);
+
+      // This matches the function parameters currently in Brubeck.
+      // If these are chaged upstream I will evaluate again.
+      this.sendAction(actionName, attrs.start, attrs.end);
     } else {
       if (!this.isDestroyed) {
         this.setProperties(attrs);
