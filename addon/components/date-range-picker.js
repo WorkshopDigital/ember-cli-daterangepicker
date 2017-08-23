@@ -109,6 +109,8 @@ export default Ember.Component.extend({
     let minDate = momentMinDate.isValid() ? momentMinDate : undefined;
     let maxDate = momentMaxDate.isValid() ? momentMaxDate : undefined;
 
+    let showCustomRangeLabel = this.get('showCustomRangeLabel');
+
     let options = this.getProperties(
       'isInvalidDate',
       'isCustomDate',
@@ -127,6 +129,7 @@ export default Ember.Component.extend({
       'timePickerIncrement',
       'showWeekNumbers',
       'showDropdowns',
+      'showCustomRangeLabel',
       'linkedCalendars',
       'dateLimit',
       'parentEl'
@@ -136,7 +139,6 @@ export default Ember.Component.extend({
       'applyLabel',
       'cancelLabel',
       'customRangeLabel',
-      'showCustomRangeLabel',
       'fromLabel',
       'toLabel',
       'format',
@@ -148,6 +150,7 @@ export default Ember.Component.extend({
 
     const defaultOptions = {
       locale: localeOptions,
+      showCustomRangeLabel: showCustomRangeLabel,
       startDate: startDate,
       endDate: endDate,
       minDate: minDate,
@@ -194,12 +197,12 @@ export default Ember.Component.extend({
 
   handleDateRangePickerEvent(actionName, picker, isCancel = false) {
     let action = this.get(actionName);
-    let attrs = {};
+    let start;
+    let end;
 
     if (!isCancel) {
-      let start = picker.startDate.format(this.get('serverFormat'));
-      let end = picker.endDate.format(this.get('serverFormat'));
-      attrs = { start, end };
+      start = picker.startDate.format(this.get('serverFormat'));
+      end = picker.endDate.format(this.get('serverFormat'));
     }
 
     if (action) {
@@ -211,9 +214,10 @@ export default Ember.Component.extend({
       // This matches the function parameters currently in Brubeck.
       // If these are chaged upstream I will evaluate again.
       this.sendAction(actionName, attrs.start, attrs.end);
+
     } else {
       if (!this.isDestroyed) {
-        this.setProperties(attrs);
+        this.setProperties({ start, end });
       }
     }
   }
