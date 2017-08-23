@@ -3,6 +3,7 @@
 
 const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
+const fbTransform = require('fastboot-transform');
 const path = require('path');
 const util = require('util');
 const extend = util._extend;
